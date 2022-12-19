@@ -11,8 +11,8 @@ import {
   ReserveUsedAsCollateralEnabled,
   SwapBorrowRateMode,
   ReserveDataUpdated,
-  MintUnbacked,
-  BackUnbacked,
+  // MintUnbacked,
+  // BackUnbacked,
   UserEModeSet,
   MintedToTreasury,
   IsolationModeTotalDebtUpdated,
@@ -352,60 +352,61 @@ export function handleReserveDataUpdated(event: ReserveDataUpdated): void {
   reserve.save();
 }
 
-export function handleMintUnbacked(event: MintUnbacked): void {
-  let caller = event.params.user;
-  let user = event.params.onBehalfOf;
-  let poolReserve = getOrInitReserve(event.params.reserve, event);
-  let userReserve = getOrInitUserReserve(user, event.params.reserve, event);
-  let amount = event.params.amount;
+// export function handleMintUnbacked(event: MintUnbacked): void {
+//   let caller = event.params.user;
+//   let user = event.params.onBehalfOf;
+//   let poolReserve = getOrInitReserve(event.params.reserve, event);
+//   let userReserve = getOrInitUserReserve(user, event.params.reserve, event);
+//   let amount = event.params.amount;
 
-  let mintUnbacked = new MintUnbackedAction(getHistoryEntityId(event));
-  mintUnbacked.pool = poolReserve.pool;
-  mintUnbacked.user = userReserve.user;
-  mintUnbacked.userReserve = userReserve.id;
-  mintUnbacked.caller = getOrInitUser(caller).id;
-  mintUnbacked.reserve = poolReserve.id;
-  mintUnbacked.amount = amount;
-  mintUnbacked.timestamp = event.block.timestamp.toI32();
-  mintUnbacked.referral = event.params.referralCode;
+//   let mintUnbacked = new MintUnbackedAction(getHistoryEntityId(event));
+//   mintUnbacked.pool = poolReserve.pool;
+//   mintUnbacked.user = userReserve.user;
+//   mintUnbacked.userReserve = userReserve.id;
+//   mintUnbacked.caller = getOrInitUser(caller).id;
+//   mintUnbacked.reserve = poolReserve.id;
+//   mintUnbacked.amount = amount;
+//   mintUnbacked.timestamp = event.block.timestamp.toI32();
+//   mintUnbacked.referral = event.params.referralCode;
 
-  mintUnbacked.save();
-}
+//   mintUnbacked.save();
+// }
 
-export function handleBackUnbacked(event: BackUnbacked): void {
-  let backer = event.params.backer;
-  let poolReserve = getOrInitReserve(event.params.reserve, event);
-  let userReserve = getOrInitUserReserve(backer, event.params.reserve, event);
-  let amount = event.params.amount;
+// export function handleBackUnbacked(event: BackUnbacked): void {
+//   let backer = event.params.backer;
+//   let poolReserve = getOrInitReserve(event.params.reserve, event);
+//   let userReserve = getOrInitUserReserve(backer, event.params.reserve, event);
+//   let amount = event.params.amount;
 
-  let poolId = getPoolByContract(event);
-  let pool = Pool.load(poolId) as Pool;
+//   let poolId = getPoolByContract(event);
+//   let pool = Pool.load(poolId) as Pool;
 
-  let premium = event.params.fee;
-  let premiumToProtocol = premium
-    .times(pool.bridgeProtocolFee as BigInt)
-    .plus(BigInt.fromI32(5000))
-    .div(BigInt.fromI32(10000));
-  let premiumToLP = premium.minus(premiumToProtocol);
-  poolReserve.lifetimePortalLPFee = poolReserve.lifetimePortalLPFee.plus(premiumToLP);
-  poolReserve.lifetimePortalProtocolFee = poolReserve.lifetimePortalProtocolFee.plus(
-    premiumToProtocol
-  );
-  poolReserve.save();
+//   let premium = event.params.fee;
+//   let premiumToProtocol = premium
+//     .times(pool.bridgeProtocolFee as BigInt)
+//     .plus(BigInt.fromI32(5000))
+//     .div(BigInt.fromI32(10000));
 
-  let backUnbacked = new BackUnbackedAction(getHistoryEntityId(event));
-  backUnbacked.pool = poolReserve.pool;
-  backUnbacked.backer = userReserve.user;
-  backUnbacked.userReserve = userReserve.id;
-  backUnbacked.reserve = poolReserve.id;
-  backUnbacked.amount = amount;
-  backUnbacked.timestamp = event.block.timestamp.toI32();
-  backUnbacked.fee = event.params.fee;
-  backUnbacked.lpFee = premiumToLP;
-  backUnbacked.protocolFee = premiumToProtocol;
+//   let premiumToLP = premium.minus(premiumToProtocol);
+//   poolReserve.lifetimePortalLPFee = poolReserve.lifetimePortalLPFee.plus(premiumToLP);
+//   poolReserve.lifetimePortalProtocolFee = poolReserve.lifetimePortalProtocolFee.plus(
+//     premiumToProtocol
+//   );
+//   poolReserve.save();
 
-  backUnbacked.save();
-}
+//   let backUnbacked = new BackUnbackedAction(getHistoryEntityId(event));
+//   backUnbacked.pool = poolReserve.pool;
+//   backUnbacked.backer = userReserve.user;
+//   backUnbacked.userReserve = userReserve.id;
+//   backUnbacked.reserve = poolReserve.id;
+//   backUnbacked.amount = amount;
+//   backUnbacked.timestamp = event.block.timestamp.toI32();
+//   backUnbacked.fee = event.params.fee;
+//   backUnbacked.lpFee = premiumToLP;
+//   backUnbacked.protocolFee = premiumToProtocol;
+
+//   backUnbacked.save();
+// }
 
 export function handleUserEModeSet(event: UserEModeSet): void {
   let user = getOrInitUser(event.params.user);

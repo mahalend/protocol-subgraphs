@@ -436,10 +436,10 @@ templates:
           handler: handleLiquidationCall
         - event: ReserveDataUpdated(indexed address,uint256,uint256,uint256,uint256,uint256)
           handler: handleReserveDataUpdated
-        - event: MintUnbacked(indexed address,address,indexed address,uint256,indexed uint16)
-          handler: handleMintUnbacked
-        - event: BackUnbacked(indexed address,indexed address,uint256,uint256)
-          handler: handleBackUnbacked
+        # - event: MintUnbacked(indexed address,address,indexed address,uint256,indexed uint16)
+        #   handler: handleMintUnbacked
+        # - event: BackUnbacked(indexed address,indexed address,uint256,uint256)
+        #   handler: handleBackUnbacked
         - event: MintedToTreasury(indexed address,uint256)
           handler: handleMintedToTreasury
         - event: UserEModeSet(indexed address,uint8)
