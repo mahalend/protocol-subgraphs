@@ -1,6 +1,6 @@
-# Aave Protocol Subgraphs
+# MahaLend Protocol Subgraphs
 
-The Aave Protocol subgraphs index data from the protocol smart contracts, and expose a GraphQL endpoint hosted by [The Graph](https://thegraph.com).
+The MahaLend Protocol subgraphs index data from the protocol smart contracts, and expose a GraphQL endpoint hosted by [The Graph](https://thegraph.com).
 
 - [Active Deployments](#active-deployments)
 - [Usage](#usage)
@@ -142,7 +142,7 @@ Why does the raw subgraph data not match app.aave.com?
 
 <details>
   <summary>User Data</summary>
-  
+
 #### User Summary
 
 The `userReserve` entity gives the supply and borrow balances for a particular user along with the underlying reserve data.

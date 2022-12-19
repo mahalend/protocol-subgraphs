@@ -1,0 +1,11 @@
+{
+  "network": "mainnet",
+  "AaveOracleAddress": "0x914a0835dC718D2458A447711DF18E32498B1BC9",
+  "AaveOracleStartBlock": 16167080,
+  "ChainlinkSourcesRegistryAddress": "0x39fEef0534a837571daF660df9B9F1Ee1bCE441a",
+  "ChainlinkSourcesRegistryStartBlock": 11379680,
+  "PoolAddressesProviderRegistryAddress": "0xccF5467C3F6772C169F2C9e30aE263D13d2cfeb0",
+  "PoolAddressesProviderRegistryStartBlock": 16167049,
+  "RewardsControllerAddress": "0xda25ded8373b7984ce6b2e0e35f204acc2382fd2",
+  "RewardsControllerStartBlock": 16215329
+}
