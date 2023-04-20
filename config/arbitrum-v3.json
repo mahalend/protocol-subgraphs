@@ -1,0 +1,9 @@
+{
+  "network": "arbitrum",
+  "AaveOracleAddress": "0x8c931b3b362ab66a376a19cf25835a259ed60265",
+  "AaveOracleStartBlock": 78154695,
+  "PoolAddressesProviderRegistryAddress": "0xa367DBd612bA537CEE3A5C5254Fb2a051725405A",
+  "PoolAddressesProviderRegistryStartBlock": 78154258,
+  "RewardsControllerAddress": "0x6BD21E06274EBb92eEa5f9EB794914bAcfF0491F",
+  "RewardsControllerStartBlock": 78154864
+}
